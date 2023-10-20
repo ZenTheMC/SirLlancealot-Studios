@@ -1,0 +1,50 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Add a background color and some padding around the entire page */
+body {
+  background-color: #f4f4f4;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em;
+}
+
+/* Style the navigation menu */
+nav ul {
+  background-color: #444;
+  overflow: hidden;
+}
+
+nav ul li {
+  float: left;
+  display: inline;
+  padding: 14px;
+}
+
+/* Style the various sections */
+section {
+  margin: 15px;
+  padding: 15px;
+  background-color: #fff;
+}
+
+/* Style the footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
