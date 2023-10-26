@@ -47,6 +47,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 openModal(this.src, index, page);
             });
         });
+
+        if (page === 'boudoir') {
+            const is18 = confirm("You must be 18+ to view this content. Are you 18 or older?");
+            if (!is18) {
+                selectedPage.style.display = 'none';
+                document.getElementById('page-home').style.display = 'block';
+            }
+        }
     }
 
     links.forEach(link => {
