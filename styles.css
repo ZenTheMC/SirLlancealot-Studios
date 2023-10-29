@@ -137,3 +137,15 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+/* Add this style to your CSS */
+.modal a {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+}

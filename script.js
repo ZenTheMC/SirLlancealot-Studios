@@ -1,6 +1,49 @@
 let currentImageIndex = 0;
 let images;
 let isHomePage = false; // Step 1: Add the global flag
+let homeCurrentImageIndex = 0;
+let homeImages;
+
+// Move these outside of the 'DOMContentLoaded'
+function loadHomePage() {
+    homeImages = document.querySelectorAll('#home-gallery img');
+    homeImages.forEach((img, index) => {
+        const parentDiv = img.closest('.home-image');
+        const seeMorePage = parentDiv.getAttribute('data-page');
+        const label = parentDiv.querySelector('h3').innerText;
+        if (img.alt !== 'Logo') {
+            img.addEventListener('click', function() {
+                console.log("Home image clicked");
+                openHomeModal(this.src, index, seeMorePage, label);
+            });
+        }
+    });
+}
+
+// New functions for the home modal
+function openHomeModal(imageSrc, index, seeMorePage, label) {
+    homeCurrentImageIndex = index;
+    document.getElementById('homeImageModal').style.display = 'block';
+    document.getElementById('homeModalImage').src = imageSrc;
+    document.getElementById('homeModalSeeMore').href = seeMorePage;
+    document.getElementById('homeModalSeeMore').textContent = `See More ${label}`;
+    document.getElementById('homeModalSeeMore').href = `#${seeMorePage}`;
+    homeImages = document.querySelectorAll(`#home-gallery img`);
+}
+
+function closeHomeModal() {
+    document.getElementById('homeImageModal').style.display = 'none';
+}
+
+function nextHomeImage() {
+    homeCurrentImageIndex = (homeCurrentImageIndex + 1) % homeImages.length;
+    document.getElementById('homeModalImage').src = homeImages[homeCurrentImageIndex].src;
+}
+
+function prevHomeImage() {
+    homeCurrentImageIndex = (homeCurrentImageIndex - 1 + homeImages.length) % homeImages.length;
+    document.getElementById('homeModalImage').src = homeImages[homeCurrentImageIndex].src;
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     const links = document.querySelectorAll('#left-sidebar a');
@@ -40,8 +83,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     modal.addEventListener('click', closeModal);
+    document.getElementById('homeImageModal').addEventListener('click', closeHomeModal);
 
     function loadPage(page) {
+        if (page === 'home') {
+            console.log("Inside loadPage, home page selected");
+            loadHomePage();  // Call the new function
+        } else {
+            // Existing logic for other pages
+        }    
+
         isHomePage = (page === 'home'); // Step 1: Set the flag
 
         const allPages = document.querySelectorAll('.page');
