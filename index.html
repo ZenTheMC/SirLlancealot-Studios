@@ -22,23 +22,18 @@
         </ul>
     </div>
     <div id="main-content">
-        <div id="page-home" class="page">
+        <div id="page-home" class="page" data-page="home">
             <h1>Welcome to SirLlancealot Studios</h1>
             <p>Your next photographer!</p>
             <img src="images/logo.jpg" alt="Logo">
-
-            <!-- Added this new modal for the home page -->
             <div id="homeImageModal" class="modal">
             <img id="homeModalImage" src="" alt="">
             <a id="homeModalSeeMore" href="#">See More</a>
             </div>
-            <!-- Added this new modal for the home page -->
-
-            <!-- Added in recent sesh : CURRENT ISSUE, there's blank/black space between imgs in slideshow for homepage, even though they are staying unique and the modal is working, while keeping the other page functionality intact and inique to them--> 
             <div id="home-gallery">
                 <div class="home-image" data-page="cosplay">
                     <h3>Cosplay</h3>
-                    <img src="images/cosplay1.jpg" alt="Cosplay Image">
+                    <img src="images/cosplay1.jpg" alt="Cosplay Image" class="clickerimg">
                     <div id="modal-cosplay" class="imageModal modal">
                         <img class="modalImage" src="" alt="">
                         <a class="modalSeeMore" href="#">See More</a>
@@ -46,7 +41,7 @@
                 </div>
                 <div class="home-image" data-page="fashion">
                     <h3>Fashion</h3>
-                    <img src="images/fashion1.jpg" alt="Fashion Image">
+                    <img src="images/fashion1.jpg" alt="Fashion Image" class="clickerimg">
                     <div id="modal-fashion" class="imageModal modal">
                         <img class="modalImage" src="" alt="">
                         <a class="modalSeeMore" href="#">See More</a>
@@ -54,7 +49,7 @@
                 </div>
                 <div class="home-image" data-page="weddings">
                     <h3>Weddings</h3>
-                    <img src="images/wedding1.jpg" alt="Wedding Image">
+                    <img src="images/wedding1.jpg" alt="Wedding Image" class="clickerimg">
                     <div id="modal-weddings" class="imageModal modal">
                         <img class="modalImage" src="" alt="">
                         <a class="modalSeeMore" href="#">See More</a>
@@ -62,45 +57,39 @@
                 </div>
                 <div class="home-image" data-page="boudoir">
                     <h3>Boudoir</h3>
-                    <img src="images/boudoir5.jpg" alt="Boudoir Image">
+                    <img src="images/boudoir5.jpg" alt="Boudoir Image" class="clickerimg">
                     <div id="modal-boudoir" class="imageModal modal">
                         <img class="modalImage" src="" alt="">
                         <a class="modalSeeMore" href="#">See More</a>
                     </div>
                 </div>
             </div>
-            <!-- Added in recent sesh-->
-
         </div>
         <div id="page-cosplay" class="page image-catalogue" style="display:none;">
-            <img src="images/cosplay1.jpg" alt="Cosplay Image 1">
-            <img src="images/cosplay2.jpg" alt="Cosplay Image 2">
-            <img src="images/cosplay3.jpg" alt="Cosplay Image 3">
-            <!-- Add more images here -->
+            <img src="images/cosplay1.jpg" alt="Cosplay Image 1" class="clickerimg">
+            <img src="images/cosplay2.jpg" alt="Cosplay Image 2" class="clickerimg">
+            <img src="images/cosplay3.jpg" alt="Cosplay Image 3" class="clickerimg">
         </div>
         <div id="page-fashion" class="page image-catalogue" style="display:none;">
-            <img src="images/fashion1.jpg" alt="Fashion Image 1">
-            <img src="images/fashion2.jpg" alt="Fashion Image 2">
-            <img src="images/fashion3.jpg" alt="Fashion Image 3">
-            <img src="images/fashion4.jpg" alt="Fashion Image 4">
-            <!-- Add more images here -->
+            <img src="images/fashion1.jpg" alt="Fashion Image 1" class="clickerimg">
+            <img src="images/fashion2.jpg" alt="Fashion Image 2" class="clickerimg">
+            <img src="images/fashion3.jpg" alt="Fashion Image 3"class="clickerimg">
+            <img src="images/fashion4.jpg" alt="Fashion Image 4" class="clickerimg">
         </div>
         <div id="page-weddings" class="page image-catalogue" style="display:none;">
-            <img src="images/wedding1.jpg" alt="Wedding Image 1">
-            <img src="images/wedding2.jpg" alt="Wedding Image 2">
-            <img src="images/wedding3.jpg" alt="Wedding Image 3">
-            <img src="images/wedding4.jpg" alt="Wedding Image 4">
-            <!-- Add more images here -->
+            <img src="images/wedding1.jpg" alt="Wedding Image 1" class="clickerimg">
+            <img src="images/wedding2.jpg" alt="Wedding Image 2" class="clickerimg">
+            <img src="images/wedding3.jpg" alt="Wedding Image 3" class="clickerimg">
+            <img src="images/wedding4.jpg" alt="Wedding Image 4" class="clickerimg">
         </div>
         <div id="page-boudoir" class="page image-catalogue" style="display:none;">
             <div id="overlay"></div>
-            <img src="images/boudoir1.jpg" alt="Boudoir Image 1">
-            <img src="images/boudoir2.jpg" alt="Boudoir Image 2">
-            <img src="images/boudoir3.jpg" alt="Boudoir Image 3">
-            <img src="images/boudoir4.jpg" alt="Boudoir Image 4">
-            <img src="images/boudoir5.jpg" alt="Boudoir Image 5">
-            <img src="images/boudoir6.jpg" alt="Boudoir Image 6">
-            <!-- Add more images here -->
+            <img src="images/boudoir1.jpg" alt="Boudoir Image 1" class="clickerimg">
+            <img src="images/boudoir2.jpg" alt="Boudoir Image 2" class="clickerimg">
+            <img src="images/boudoir3.jpg" alt="Boudoir Image 3" class="clickerimg">
+            <img src="images/boudoir4.jpg" alt="Boudoir Image 4" class="clickerimg">
+            <img src="images/boudoir5.jpg" alt="Boudoir Image 5" class="clickerimg">
+            <img src="images/boudoir6.jpg" alt="Boudoir Image 6" class="clickerimg">
         </div>        
         <div id="page-about" class="page" style="display:none;">
             <img src="images/llance.jpg" alt="Llance's photo">
@@ -126,6 +115,6 @@
             </p>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>

@@ -1,12 +1,13 @@
 let currentImageIndex = 0;
 let images;
-let isHomePage = false; // Step 1: Add the global flag
+let isHomePage = false;
 let homeCurrentImageIndex = 0;
 let homeImages;
 
-// Move these outside of the 'DOMContentLoaded'
 function loadHomePage() {
-    homeImages = document.querySelectorAll('#home-gallery img');
+    console.log("loadHomePage is running");
+    console.log(document.querySelectorAll('#home-gallery img').length);
+    homeImages = document.querySelectorAll('.home-image img');
     homeImages.forEach((img, index) => {
         const parentDiv = img.closest('.home-image');
         const seeMorePage = parentDiv.getAttribute('data-page');
@@ -16,11 +17,11 @@ function loadHomePage() {
                 console.log("Home image clicked");
                 openHomeModal(this.src, index, seeMorePage, label);
             });
+            console.log("Event listener attached to ", img);
         }
     });
 }
 
-// New functions for the home modal
 function openHomeModal(imageSrc, index, seeMorePage, label) {
     homeCurrentImageIndex = index;
     document.getElementById('homeImageModal').style.display = 'block';
@@ -62,14 +63,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function nextImage() {
-        if (!isHomePage) {  // Step 2: Check the flag
+        if (!isHomePage) {
             currentImageIndex = (currentImageIndex + 1) % images.length;
             modalImage.src = images[currentImageIndex].src;
         }
     }
 
     function prevImage() {
-        if (!isHomePage) {  // Step 2: Check the flag
+        if (!isHomePage) {
             currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
             modalImage.src = images[currentImageIndex].src;
         }
@@ -80,53 +81,55 @@ document.addEventListener('DOMContentLoaded', function() {
             if (event.key === 'ArrowRight') nextImage();
             if (event.key === 'ArrowLeft') prevImage();
         }
+        if (document.getElementById('homeImageModal').style.display === 'block') {
+            if (event.key === 'ArrowRight') nextHomeImage();
+            if (event.key === 'ArrowLeft') prevHomeImage();
+        }
     });
 
     modal.addEventListener('click', closeModal);
     document.getElementById('homeImageModal').addEventListener('click', closeHomeModal);
 
     function loadPage(page) {
-        if (page === 'home') {
-            console.log("Inside loadPage, home page selected");
-            loadHomePage();  // Call the new function
-        } else {
-            // Existing logic for other pages
-        }    
-
-        isHomePage = (page === 'home'); // Step 1: Set the flag
-
         const allPages = document.querySelectorAll('.page');
         allPages.forEach(p => p.style.display = 'none');
 
-        const selectedPage = document.getElementById(`page-${page}`);
-        selectedPage.style.display = 'block';
+        if (page === 'home') {
+            console.log("Inside loadPage, home page selected");
+            document.getElementById('page-home').style.display = 'block';
+            loadHomePage();
+        } else {
+            isHomePage = (page === 'home');
 
-        images = document.querySelectorAll(`#page-${page} img`);
+            const allPages = document.querySelectorAll('.page');
+            allPages.forEach(p => p.style.display = 'none');
 
-        // Remove existing click listeners to prevent duplication
-        images.forEach((img) => {
-            const newImg = img.cloneNode(true);
-            img.parentNode.replaceChild(newImg, img);
-        });
-    
-        // Re-query to get the new nodes
-        images = document.querySelectorAll(`#page-${page} img`);
+            const selectedPage = document.getElementById(`page-${page}`);
+            selectedPage.style.display = 'block';
 
-        // Conditionally attach click listeners, skip for 'home' and 'about'
-        if (page !== 'home' && page !== 'about') {
-            images.forEach((img, index) => {
-                img.addEventListener('click', function() {
-                    openModal(this.src, index, page);
-                });
+            images = document.querySelectorAll(`#page-${page} img`);
+
+            images.forEach((img) => {
+                const newImg = img.cloneNode(true);
+                img.parentNode.replaceChild(newImg, img);
             });
-        }
     
-        // Existing 18+ check for 'boudoir'
-        if (page === 'boudoir') {
-            const is18 = confirm("You must be 18+ to view this content. Are you 18 or older?");
-            if (!is18) {
-                selectedPage.style.display = 'none';
-                document.getElementById('page-home').style.display = 'block';
+            images = document.querySelectorAll(`#page-${page} img`);
+
+            if (page !== 'home' && page !== 'about') {
+                images.forEach((img, index) => {
+                    img.addEventListener('click', function() {
+                        openModal(this.src, index, page);
+                    });
+                });
+            }
+
+            if (page === 'boudoir') {
+                const is18 = confirm("You must be 18+ to view this content. Are you 18 or older?");
+                if (!is18) {
+                    selectedPage.style.display = 'none';
+                    document.getElementById('page-home').style.display = 'block';
+                }
             }
         }
     }
@@ -139,5 +142,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    loadPage('home');  // Load the home page by default
+    loadPage('home');
 });
