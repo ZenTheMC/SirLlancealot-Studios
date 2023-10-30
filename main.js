@@ -7,7 +7,9 @@ let homeImages;
 function loadHomePage() {
     console.log("loadHomePage is running");
     console.log(document.querySelectorAll('#home-gallery img').length);
-    homeImages = document.querySelectorAll('.home-image img');
+    homeImages = document.querySelectorAll('.home-image .clickerimg');
+    console.log("Captured Home Images: ", homeImages);
+    console.log("Home Images Length: ", homeImages.length);
     homeImages.forEach((img, index) => {
         const parentDiv = img.closest('.home-image');
         const seeMorePage = parentDiv.getAttribute('data-page');
@@ -29,7 +31,6 @@ function openHomeModal(imageSrc, index, seeMorePage, label) {
     document.getElementById('homeModalSeeMore').href = seeMorePage;
     document.getElementById('homeModalSeeMore').textContent = `See More ${label}`;
     document.getElementById('homeModalSeeMore').href = `#${seeMorePage}`;
-    homeImages = document.querySelectorAll(`#home-gallery img`);
 }
 
 function closeHomeModal() {
@@ -39,11 +40,13 @@ function closeHomeModal() {
 function nextHomeImage() {
     homeCurrentImageIndex = (homeCurrentImageIndex + 1) % homeImages.length;
     document.getElementById('homeModalImage').src = homeImages[homeCurrentImageIndex].src;
+    console.log("Next Image Source: ", homeImages[homeCurrentImageIndex].src);
 }
 
 function prevHomeImage() {
     homeCurrentImageIndex = (homeCurrentImageIndex - 1 + homeImages.length) % homeImages.length;
     document.getElementById('homeModalImage').src = homeImages[homeCurrentImageIndex].src;
+    console.log("Next Image Source: ", homeImages[homeCurrentImageIndex].src);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -108,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
             selectedPage.style.display = 'block';
 
             images = document.querySelectorAll(`#page-${page} img`);
+            console.log("Other Page Images Length: ", images.length);
 
             images.forEach((img) => {
                 const newImg = img.cloneNode(true);
@@ -115,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     
             images = document.querySelectorAll(`#page-${page} img`);
+            console.log("Other Page Images Length: ", images.length);
 
             if (page !== 'home' && page !== 'about') {
                 images.forEach((img, index) => {
