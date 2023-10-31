@@ -1,3 +1,13 @@
-Previous Features: A simple photography website, which a sidebar, and main page section. The main pages are rendered dynamically through the JS, instead of having multiple html files. There are 4 other main image catalogue sections that have a certain subcategory of pictures, with a slideshow feature that allows the user to click any image and bring up a modal(an enlarged version of the image, and a blacked out background), and then the user can cycle through the images contained within that page with the arrow keys. There are also 2-3 static pages like contact, about. Additionally, we have a home page with the website logo, and 1 unique image that is also present each other page, to give preview of each type of photography. These are hardcoded, so we are not dynamically fetching them from the other pages, which is fine. We also have a feature that brings up an 18+ explicit content alert when navigation to the Boudoir page is triggered, and it only allows the navigation to go through if the user confirms.
+About Me Page:
+Contact Me should navigate to contact page
+Styling to make the about me summary sit to the right of the img, and the contact me to sit right under the image
 
-New Goal Feature: The addition of a unique slideshow for the home page images, since we are already able to have it work on this page with just the old slideshow feature, which seems to work globally for all pages. However, that feature seems to also include the website logo image on the home page within that slideshow set, which it should not, and additionally it also shows a blank/black image every other image(every other click of the arrow keys). We decided that this was a conflicting error from the original slideshow logic we had, which was working well for the other pages, so we decided to add new logic that is specific to this page. I would like to make sure that the logo is excluded, the rest of the images constrained within the home page are all included, the blank image every other key push should not be there, and there should be a See More button or text or something that is included INSIDE the modal that the slideshow feature basically pops up, and that See More button should navigate the user to the page that the image is from. If we could also include the Page Label that is currently visible(text) above the image on the home page, inside of the modal too, above the text, or maybe combine it to say "See more <Cosplay>"(cosplay is just an example for one of the pages/categories).
+Contact Page:
+Add FontAwesome Icons for the phone, email, and socials
+
+See More Button:
+Style the see more button better, so it's a black background and white text
+
+Index.html:
+Do we even need the modal and See More button and stuff for the logo img?
+We're not using them, and we explicitly are preventing them from being included in the homePage image modals, so why should we keep it? Probably best to remove it if it doesn't break anything.
