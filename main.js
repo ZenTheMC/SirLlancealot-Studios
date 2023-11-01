@@ -160,5 +160,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    document.querySelector('#page-about a[data-page="contact"]').addEventListener('click', function(e) {
+        e.preventDefault();
+        loadPage('contact');
+    });
+
     loadPage('home');
 });
