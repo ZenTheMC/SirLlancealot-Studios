@@ -172,9 +172,13 @@ img {
 }
 
 #contact-me {
+    display: inline-block;
     text-decoration: none;
     color: #fff;
     font-weight: bold;
+    border: #fff solid 1px;
+    padding: 5px;
+    margin-top: 20px;
 }
 
 #contact-me:hover {
@@ -186,4 +190,18 @@ img {
 #content-container {
     display: flex;
     align-items: space-between;
+}
+
+#page-contact .contact-links a {
+    display: inline-block;
+}
+
+.contact-links {
+    margin-top: 30px;
+    margin-bottom: 60px;
+}
+
+#about-p {
+    padding: 30px;
+    border: solid white 2px;
 }
